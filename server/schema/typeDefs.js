@@ -5,7 +5,11 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
+  }
+
+  type AuthPayload {
     token: String
+    user: User
   }
 
   type MealPlan {
@@ -27,8 +31,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    login(email: String!, password: String!): User
-    signup(username: String!, email: String!, password: String!): User
+    login(email: String!, password: String!): AuthPayload
+    signup(username: String!, email: String!, password: String!): AuthPayload
     addMealPlan(name: String!, description: String!, meals: [String]!): MealPlan
     updateMealPlan(
       id: ID!

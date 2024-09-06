@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const MealPlan = require("../models/MealPlan");
-const { processPayment } = require("../utils/payment"); // Stripe payment function
+const { processPayment } = require("../utils/payment");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -22,7 +22,7 @@ const resolvers = {
     signup: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
-      return { ...user._doc, token };
+      return { token, user };
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -30,7 +30,7 @@ const resolvers = {
         throw new Error("Invalid credentials");
       }
       const token = signToken(user);
-      return { ...user._doc, token };
+      return { token, user };
     },
     addMealPlan: async (parent, { name, description, meals }, context) => {
       if (!context.user) {
