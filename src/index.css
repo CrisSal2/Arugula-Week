@@ -24,7 +24,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -47,12 +46,42 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #8a959b;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+/***************************************************************** */
+
+
+.navbar {
+  padding: 3%;
+  background-color: #8a959b;
+}
+
+.footer {
+  padding: 3%;
+  background-color: #8a959b;
+}
+
+
+#root {
+  height: 100%;
+}
+
+#Profile_Picture, #About-Me-Picture {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.icons {
+  height: 100%;
+  cursor: pointer;
+}
+
+
+/***************************************************************** */
 
 @media (prefers-color-scheme: light) {
   :root {
