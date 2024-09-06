@@ -2,7 +2,7 @@ import React from "react"
 
 function Pantry() {
     return(
-        <div>
+        <div className="Pantry">
             Pantry
         </div>
     )

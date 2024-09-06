@@ -1,33 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const data = [
-    {
-        label: 'HOME',
-        to: '/'
-    },
-    {
-        label: 'ABOUT',
-        to: '/about'
-    },
-    {
-        label: 'MY-WEEK',
-        to: '/my-week'
-    },
-    {
-        label: 'PANTRY',
-        to: '/pantry'
-    },
-    {
-        label: 'SIGN-IN',
-        to: '/sign-in'
-    }
-]
-
-
-
-
-
 
 function NavBar() {
     return (
@@ -56,3 +29,32 @@ function NavBar() {
 };
 
 export default NavBar;
+
+
+
+
+
+
+
+/* const data = [
+    {
+        label: 'HOME',
+        to: '/'
+    },
+    {
+        label: 'ABOUT',
+        to: '/about'
+    },
+    {
+        label: 'MY-WEEK',
+        to: '/my-week'
+    },
+    {
+        label: 'PANTRY',
+        to: '/pantry'
+    },
+    {
+        label: 'SIGN-IN',
+        to: '/sign-in'
+    }
+] */

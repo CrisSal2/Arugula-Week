@@ -54,10 +54,15 @@ button:focus-visible {
 }
 /***************************************************************** */
 
+.Home, .About, .Pantry, .My-Week, .Sign-In {
+  height: 76vh;
+}
 
 .navbar {
   padding: 3%;
   background-color: #8a959b;
+  display: flex;
+  justify-content: space-between;
 }
 
 .footer {
@@ -68,6 +73,7 @@ button:focus-visible {
 
 #root {
   height: 100%;
+  width: 100%;
 }
 
 #Profile_Picture, #About-Me-Picture {
