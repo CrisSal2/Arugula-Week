@@ -1,60 +1,25 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
+const navLinks = [
+    { label: 'Home', to: '/' },
+    { label: 'About', to: '/about' },
+    { label: 'My-Week', to: '/my-week' },
+    { label: 'Pantry', to: '/pantry' },
+    { label: 'Sign-In', to: '/sign-in' },
+];
 
 function NavBar() {
     return (
         <nav className="navbar">
-            <div>
-            <Link to={'/'}>
-                <button>Home</button>
-                </Link>
-            </div>
-            <div className='navbar_container'>
-                <Link to={'/about'}>
-                <button>About</button>
-                </Link>
-                <Link to={'/my-week'}>
-                <button>My-Week</button>
-                </Link>
-                <Link to={'/pantry'}>
-                <button>Pantry</button>
-                </Link>
-                <Link to={'/sign-in'}>
-                <button>Sign-In</button>
-                </Link>
+            <div className="navbar_container">
+                {navLinks.map((link) => (
+                    <Link key={link.to} to={link.to}>
+                        <button>{link.label}</button>
+                    </Link>
+                ))}
             </div>
         </nav>
     );
-};
+}
 
 export default NavBar;
-
-
-
-
-
-
-
-/* const data = [
-    {
-        label: 'HOME',
-        to: '/'
-    },
-    {
-        label: 'ABOUT',
-        to: '/about'
-    },
-    {
-        label: 'MY-WEEK',
-        to: '/my-week'
-    },
-    {
-        label: 'PANTRY',
-        to: '/pantry'
-    },
-    {
-        label: 'SIGN-IN',
-        to: '/sign-in'
-    }
-] */
