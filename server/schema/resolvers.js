@@ -2,14 +2,18 @@ const User = require("../models/User");
 const MealPlan = require("../models/MealPlan");
 const { processPayment } = require("../utils/payment");
 const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require("apollo-server-express");
 
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
+      // if (context.req && context.req.user) {
+      //   return await User.findById(context.req.user._id);
+      // }
       if (context.user) {
         return await User.findById(context.user._id);
       }
-      throw new Error("Not authenticated");
+      throw new AuthenticationError("Not authenticated");
     },
     getMealPlans: async () => {
       return await MealPlan.find();
@@ -27,7 +31,7 @@ const resolvers = {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user || !(await user.isCorrectPassword(password))) {
-        throw new Error("Invalid credentials");
+        throw new AuthenticationError("Invalid credentials");
       }
       const token = signToken(user);
       return { token, user };

@@ -17,7 +17,7 @@ const Signup = () => {
         variables: { ...formState },
       });
       // Save the token
-      localStorage.setItem("auth-token", data.signup.token);
+      localStorage.setItem("auth-token", data.signup.token); 
       console.log("Signup successful, token:", data.signup.token);
     } catch (err) {
       console.error(err);
