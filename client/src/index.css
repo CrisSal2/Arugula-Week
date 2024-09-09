@@ -55,7 +55,7 @@ button:focus-visible {
 /***************************************************************** */
 
 .Home, .About, .Pantry, .My-Week, .Sign-In {
-  height: 76vh;
+  min-height: 76vh;
 }
 
 .navbar {
