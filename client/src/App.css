@@ -11,7 +11,7 @@
 
 .lander {
   background-color: white;
-  padding: 20px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,8 +21,15 @@
 
 .sign-in-btn {
   padding: 10px 30px;
-  background-color: grey;
+  background-color: #63804B;
   color: white;
   border: none;
   border-radius: 15px;
 }
+
+/* .navbar_logo {
+  height: 100px;
+  width: auto;
+  padding-right: 10px;
+  
+} */
