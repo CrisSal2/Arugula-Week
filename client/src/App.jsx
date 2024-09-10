@@ -5,7 +5,7 @@ import Footer from './components/Footer'
 import Home from './containers/Home'
 import About from './containers/About'
 import MyWeek from './containers/MyWeek'
-import Pantry from './containers/Pantry'
+import GroceryList from './containers/GroceryList'
 import SignIn from './containers/SignIn'
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <Route index path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/my-week' element={<MyWeek />} />
-          <Route path='/pantry' element={<Pantry />} />
+          <Route path='/grocery-list' element={<GroceryList />} />
           <Route path='/sign-in' element={<SignIn />} />
         </Routes>
         <Footer />
