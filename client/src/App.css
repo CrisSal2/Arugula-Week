@@ -11,7 +11,7 @@
 
 .lander {
   background-color: white;
-  padding: 20px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
