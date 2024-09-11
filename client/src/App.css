@@ -27,9 +27,14 @@
   border-radius: 15px;
 }
 
-/* .navbar_logo {
-  height: 100px;
-  width: auto;
-  padding-right: 10px;
-  
-} */
+.dayColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #63804B;
+  color: black;
+}
