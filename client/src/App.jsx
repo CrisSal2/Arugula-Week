@@ -7,6 +7,8 @@ import About from './containers/About'
 import MyWeek from './containers/MyWeek'
 import SignIn from './containers/SignIn'
 import Dashboard from './containers/Dashboard'
+import SignUp from './containers/SignUp'
+import SignOut from './containers/SignOut'
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
           <Route path='/my-week' element={<MyWeek />} />
           <Route path='/sign-in' element={<SignIn />} />
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/sign-up' element={<SignUp />} />
+          <Route path='/sign-out' element={<SignOut />} />
         </Routes>
         <Footer />
       </div>

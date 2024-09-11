@@ -4,9 +4,9 @@ const navLinks = [
     { label: 'Home', to: '/' },
     { label: 'About', to: '/about' },
     { label: 'My Week', to: '/my-week' },
-    { label: 'Grocery List', to: '/grocery-list' },
     { label: 'Sign in', to: '/sign-in' },
     { label: 'Dashboard', to: '/dashboard' },
+   
 ];
 
 function NavBar() {
