@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
 function MyWeek() {
+
   const [meals, setMeals] = useState({
     Monday: { breakfast: '', lunch: '', dinner: '' },
     Tuesday: { breakfast: '', lunch: '', dinner: '' },
@@ -50,6 +51,7 @@ function MyWeek() {
               className="mt-1 block w-full p-2 border rounded-md"
             />
           </div>
+
         </div>
       ))}
     </div>
