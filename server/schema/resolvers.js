@@ -36,15 +36,15 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addMealPlan: async (parent, { name, description, meals }, context) => {
+    addMealPlan: async (parent, { name, description, meals, url }, context) => {
       if (!context.user) {
         throw new Error("Not authenticated");
       }
-      return await MealPlan.create({ name, description, meals });
+      return await MealPlan.create({ name, description, meals, url });
     },
     updateMealPlan: async (
       parent,
-      { id, name, description, meals },
+      { id, name, description, meals, url },
       context
     ) => {
       if (!context.user) {
@@ -52,7 +52,7 @@ const resolvers = {
       }
       return await MealPlan.findByIdAndUpdate(
         id,
-        { name, description, meals },
+        { name, description, meals, url },
         { new: true }
       );
     },
