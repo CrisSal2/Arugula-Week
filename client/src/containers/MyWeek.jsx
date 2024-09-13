@@ -1,21 +1,48 @@
 import React, { useState } from 'react';
+import { useMutation, gql } from '@apollo/client';
+import dayjs from 'dayjs';
+import isoWeek from 'dayjs/plugin/isoWeek';
 
-const daysOfWeek = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+dayjs.extend(isoWeek);
+
+const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+// Define GraphQL mutation
+const ADD_WEEK = gql`
+  mutation AddWeek($meals: WeekInput!, $weekStart: String!, $weekEnd: String!) {
+    addWeek(meals: $meals, weekStart: $weekStart, weekEnd: $weekEnd) {
+      success
+      message
+    }
+  }
+`;
 
 function MyWeek() {
   const [meals, setMeals] = useState({
-    Saturday: { breakfast: '', lunch: '', dinner: '' },
     Sunday: { breakfast: '', lunch: '', dinner: '' },
     Monday: { breakfast: '', lunch: '', dinner: '' },
     Tuesday: { breakfast: '', lunch: '', dinner: '' },
     Wednesday: { breakfast: '', lunch: '', dinner: '' },
     Thursday: { breakfast: '', lunch: '', dinner: '' },
     Friday: { breakfast: '', lunch: '', dinner: '' },
+    Saturday: { breakfast: '', lunch: '', dinner: '' },
   });
 
   const [copyBreakfast, setCopyBreakfast] = useState(false);
   const [copyLunch, setCopyLunch] = useState(false);
   const [copyDinner, setCopyDinner] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(dayjs());
+
+  const [addWeek, { loading, error, data }] = useMutation(ADD_WEEK);
+
+  const handleDateChange = (e) => {
+    setSelectedDate(dayjs(e.target.value));
+  };
+
+  const startOfWeek = selectedDate.startOf('week');
+  const endOfWeek = dayjs(startOfWeek).add(6, 'day');
+  const formattedStartOfWeek = startOfWeek.format('MM/DD/YYYY');
+  const formattedEndOfWeek = endOfWeek.format('MM/DD/YYYY');
 
   const handleInputChange = (day, mealType, value) => {
     setMeals(prevMeals => ({
@@ -37,8 +64,46 @@ function MyWeek() {
     });
   };
 
+  const handleSubmitWeek = async () => {
+    try {
+      const variables = {
+        meals,
+        weekStart: formattedStartOfWeek,
+        weekEnd: formattedEndOfWeek,
+      };
+
+      const response = await addWeek({ variables });
+      if (response.data.addWeek.success) {
+        console.log('Week data submitted successfully!');
+        // Optionally, reset the form here
+      } else {
+        console.error('Failed to submit week data:', response.data.addWeek.message);
+      }
+    } catch (error) {
+      console.error('Error submitting week data:', error);
+    }
+  };
+
   return (
     <div>
+      {/* Week picker */}
+      <div className="text-center mb-6">
+        <h2 className="text-2xl font-bold mb-4">Select a Week</h2>
+        <input
+          type="date"
+          value={selectedDate.format('YYYY-MM-DD')}
+          onChange={handleDateChange}
+          className="border p-2 rounded-md"
+        />
+      </div>
+
+      {/* Week range display */}
+      <div className="text-center mb-6">
+        <h2 className="text-2xl font-bold">
+          The week of {formattedStartOfWeek} - {formattedEndOfWeek}
+        </h2>
+      </div>
+
       {/* Copy checkboxes */}
       <div className="flex justify-center mb-6 space-x-4">
         <label className="flex items-center space-x-2">
@@ -122,6 +187,20 @@ function MyWeek() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Add Week button */}
+      <div className="mt-8 flex justify-center">
+        <button
+          onClick={handleSubmitWeek}
+          className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700"
+        >
+          {loading ? 'Submitting...' : 'Add Week'}
+        </button>
+        {error && <p className="text-red-600 mt-4">{error.message}</p>}
+        {data && data.addWeek.success && (
+          <p className="text-green-600 mt-4">Week submitted successfully!</p>
+        )}
       </div>
     </div>
   );
