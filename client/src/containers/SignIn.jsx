@@ -1,7 +1,7 @@
 import React, { useState } from "react"; // Ensure useState is imported
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../graphql/mutations";
-
+import Auth from '../utils/auth';
 
 
 function signIn() {
@@ -17,8 +17,9 @@ function signIn() {
       // Handle successful login, e.g., save the token and user info
       localStorage.setItem('token', token);
       console.log('Logged in successfully:', user);
-      alert('Login successful!');
+      
       // Redirect or perform further actions
+      Auth.login(token);
     } catch (error) {
       console.error('Login failed:', error);
       alert('Login failed. Please try again.');
@@ -31,16 +32,22 @@ function signIn() {
   <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
     <div className="max-w-md w-full p-6">
       <h1 className="text-3xl font-semibold mb-6 text-black text-center">Sign in</h1>
-      <form className="signIn-form space-y-4 md:space-y-6">
+      <form 
+      onSubmit={handleSubmit}
+      className="signIn-form space-y-4 md:space-y-6">
         <div className="my-3">
           <label htmlFor="email-signIn" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email:</label>
-          <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" type="text" id="email-signIn" placeholder="name@company.com" />
+          <input
+          onChange={(e) => setEmail(e.target.value)}
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" type="text" id="email-signIn" placeholder="name@company.com" />
 
 
         </div>
         <div className="">
           <label htmlFor="password-signIn" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password:</label>
-          <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="password" id="password-signIn" placeholder="••••••••" />
+          <input 
+          onChange={(e) => setPassword(e.target.value)}
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="password" id="password-signIn" placeholder="••••••••" />
 
 
          
