@@ -27,6 +27,8 @@ function MyWeek() {
     Friday: { breakfast: '', lunch: '', dinner: '' },
     Saturday: { breakfast: '', lunch: '', dinner: '' },
   });
+  const [url, setImageUrl] = useState('');
+  const [image, setImage] = useState(null);  // For storing the selected image
 
   const [copyBreakfast, setCopyBreakfast] = useState(false);
   const [copyLunch, setCopyLunch] = useState(false);
@@ -50,7 +52,40 @@ function MyWeek() {
       [day]: { ...prevMeals[day], [mealType]: value },
     }));
   };
+  const handleFileChange = (e) => {
+    setImage(e.target.files[0]);
+  };
 
+  const handleUpload = async (e) => {
+    e.preventDefault();
+
+    if (!image || !meal || !description) {
+      alert('Please fill out all fields and select an image.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', image);
+    formData.append('upload_preset', 'pucbutou');
+
+    try {
+      const uploadResponse = await fetch('https://api.cloudinary.com/v1_1/dbdfjnmds/image/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const uploadData = await uploadResponse.json();
+      setImageUrl(uploadData.secure_url); // Get the image URL
+
+      // Send the meal plan details and image URL to the GraphQL API
+      const response = await addMealPlan({ variables: { name: meal, description, imageUrl: uploadData.secure_url } });
+
+      console.log('Meal plan added successfully:', response.data);
+      alert('Meal plan added successfully!');
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to add meal plan.');
+    }
+  };
   const copyMealToAllDays = (mealType) => {
     const firstDayMeal = meals['Saturday'][mealType];
     setMeals(prevMeals => {
@@ -165,6 +200,23 @@ function MyWeek() {
                 disabled={copyBreakfast && day !== 'Saturday'}
               />
             </div>
+            <div className="flex items-center justify-center w-full">
+              <label htmlFor="dropzone-file"
+                className="flex flex-col items-center justify-center w-full h-fit border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500">
+                <div className="flex flex-col items-center justify-center pt-2 pb-2">
+                  
+                  <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Upload image (optional)</span></p>
+                  
+                </div>
+                <input
+                  name="image"
+                  id="dropzone-file"
+                  type="file"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
+              </label>
+            </div>
             <div className="mb-2">
               <label className="block text-sm font-medium">Lunch:</label>
               <input
@@ -174,6 +226,23 @@ function MyWeek() {
                 className="mt-1 block w-full p-2 border rounded-md"
                 disabled={copyLunch && day !== 'Saturday'}
               />
+            </div>
+            <div className="flex items-center justify-center w-full">
+              <label htmlFor="dropzone-file"
+                className="flex flex-col items-center justify-center w-full h-fit border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500">
+                <div className="flex flex-col items-center justify-center pt-2 pb-2">
+                  
+                  <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Upload image</span></p>
+                  
+                </div>
+                <input
+                  name="image"
+                  id="dropzone-file"
+                  type="file"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
+              </label>
             </div>
             <div className="mb-2">
               <label className="block text-sm font-medium">Dinner:</label>
@@ -185,6 +254,26 @@ function MyWeek() {
                 disabled={copyDinner && day !== 'Saturday'}
               />
             </div>
+            {/* Upload an image for each meal */}
+            <div className="flex items-center justify-center w-full">
+              <label htmlFor="dropzone-file"
+                className="flex flex-col items-center justify-center w-full h-fit border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500">
+                <div className="flex flex-col items-center justify-center pt-2 pb-2">
+                  
+                  <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Upload image</span></p>
+                  
+                </div>
+                <input
+                  name="image"
+                  id="dropzone-file"
+                  type="file"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
+              </label>
+            </div>
+
+
           </div>
         ))}
       </div>

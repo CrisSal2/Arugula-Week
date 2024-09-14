@@ -17,6 +17,7 @@ const typeDefs = gql`
     name: String
     description: String
     meals: [String]
+    url: String
   }
 
   type PaymentStatus {
@@ -33,12 +34,13 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): AuthPayload
     signup(username: String!, email: String!, password: String!): AuthPayload
-    addMealPlan(name: String!, description: String!, meals: [String]!): MealPlan
+    addMealPlan(name: String!, description: String!, meals: [String]!, url: String!): MealPlan
     updateMealPlan(
       id: ID!
       name: String
       description: String
       meals: [String]
+      url: String
     ): MealPlan
     deleteMealPlan(id: ID!): Boolean
     subscribePremium(planId: String!, paymentToken: String!): PaymentStatus

@@ -1,24 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
+import {BrowserRouter as Router} from 'react-router-dom'
 import './index.css';
 import App from './App';
 
-// Create Apollo Client instance
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql', // Your GraphQL endpoint
+  uri: '/graphql', 
   cache: new InMemoryCache(),
+  request: operation => {
+    operation.setContext({
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}` || ''
+      }
+    })
+  }
+
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <Router>
-        <App />
-      </Router>
+     <ApolloProvider client={client}>
+    <Router>
+      <App />
+    </Router>
     </ApolloProvider>
   </React.StrictMode>
 );
