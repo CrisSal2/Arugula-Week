@@ -1,5 +1,20 @@
 const mongoose = require("mongoose");
 
+const mealSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  calories: {
+    type: Number,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+});
+
 const mealPlanSchema = new mongoose.Schema({
   name: { // Meal Name
     type: String,
@@ -9,8 +24,8 @@ const mealPlanSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  meals: { // Meal Plan Meals
-    type: [String],
+  meals: {
+    type: [mealSchema], // Array of meals
     required: true,
   },
   url: { // image URL
