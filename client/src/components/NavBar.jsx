@@ -5,7 +5,7 @@ import { useState } from 'react';
 const publicLinks = [
     { label: 'Home', to: '/' },
     { label: 'About', to: '/about' },
-    { label: 'Sign in', to: '/signin' },
+    { label: 'Sign In', to: '/signin' },
 ];
 const loggedInLinks = [
     { label: 'Home', to: '/' },
@@ -19,7 +19,7 @@ const navLinks = Auth.isLoggedIn() ? loggedInLinks : publicLinks;
 function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
     return (
-        <nav className="navbar bg-white border-gray-200 dark:bg-gray-900">
+        <nav className="navbar bg-white border-gray-200 dark:bg-gray-900 gloock-regular navbar">
             <div className="navbar_container max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <img src="../images/leaf.png" alt="logo" className="h-40"/>
 
@@ -86,7 +86,7 @@ function NavBar() {
                         {navLinks.map((link) => (
                             <li key={link.to}>
                                 <Link to={link.to}>
-                                    <button className="block py-2 px-3 text-gray-900 rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white md:dark:hover:bg-transparent">
+                                    <button className="block py-2 px-3 text-green-900 rounded  md:hover:bg-transparent md:border-0 md:p-0 dark:text-white    md:dark:hover:bg-transparent">
                                         {link.label}
                                     </button>
                                 </Link>
@@ -96,9 +96,10 @@ function NavBar() {
                             <li>
                                 <button
                                     onClick={Auth.logout}
-                                    className="block py-2 px-6 text-white rounded bg-black  md:border-0  dark:text-white hover:bg-red-800"
+                                    className="block py-2 px-6 text-white rounded md:border-0  dark:text-white
+                                    bg-yellow-600 hover:bg-red-800 SignOutBtn"
                                 >
-                                    Sign out
+                                    Sign Out
                                 </button>
                             </li>
                         )}
