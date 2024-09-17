@@ -87,11 +87,11 @@ function MyWeek() {
     }
   };
   const copyMealToAllDays = (mealType) => {
-    const firstDayMeal = meals['Saturday'][mealType];
+    const firstDayMeal = meals['Sunday'][mealType];
     setMeals(prevMeals => {
       const updatedMeals = { ...prevMeals };
       daysOfWeek.forEach((day) => {
-        if (day !== 'Saturday') {
+        if (day !== 'Sunday') {
           updatedMeals[day][mealType] = firstDayMeal;
         }
       });
@@ -120,7 +120,7 @@ function MyWeek() {
   };
 
   return (
-    <div>
+    <div className="px-4 sm:px-8 lg:px-64">
       {/* Week picker */}
       <div className="text-center mb-6">
         <h2 className="text-2xl font-bold mb-4">Select a Week</h2>
@@ -186,7 +186,7 @@ function MyWeek() {
       </div>
 
       {/* Meal inputs */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {daysOfWeek.map((day) => (
           <div key={day} className="border p-4 rounded-lg shadow-md bg-white">
             <h3 className="text-xl font-bold mb-4">{day}</h3>
