@@ -8,7 +8,7 @@ const publicLinks = [
     { label: 'Sign In', to: '/signin' },
 ];
 const loggedInLinks = [
-    { label: 'Home', to: '/' },
+    
     { label: 'About', to: '/about' },
     { label: 'My Week', to: '/myweek' },
     { label: 'Dashboard', to: '/dashboard' },
