@@ -37,6 +37,7 @@ const typeDefs = gql`
     getMealPlans: [MealPlan]
     getMealPlanById(id: ID!): MealPlan
     getMealById(mealPlanId: ID!, mealId: ID!): Meal
+    weeks: [Week]
   }
 
   type Mutation {
@@ -57,6 +58,50 @@ const typeDefs = gql`
     calories: Int!
     description: String!
   }
+
+  input MealInput {
+  breakfast: String
+  lunch: String
+  dinner: String
+}
+
+input WeekInput {
+  Sunday: MealInput
+  Monday: MealInput
+  Tuesday: MealInput
+  Wednesday: MealInput
+  Thursday: MealInput
+  Friday: MealInput
+  Saturday: MealInput
+}
+
+type Mutation {
+  addWeek(meals: WeekInput!, weekStart: String!, weekEnd: String!): Week
+}
+
+type Week {
+  weekStart: String!
+  weekEnd: String!
+  meals: Meals
+}
+
+type Meals {
+  Sunday: Meal
+  Monday: Meal
+  Tuesday: Meal
+  Wednesday: Meal
+  Thursday: Meal
+  Friday: Meal
+  Saturday: Meal
+}
+
+type Meal {
+  breakfast: String
+  lunch: String
+  dinner: String
+}
+  
+
 `;
 
 module.exports = typeDefs;
