@@ -14,7 +14,7 @@
 
 ## Project Description
 
-**MealPrep** is a full-stack web application that helps users plan and manage their meals efficiently. Users can create, update, and delete meal plans, and track the ingredients and meals they need for the week. The app is built with the MERN stack (MongoDB, Express, React, Node.js) and leverages GraphQL for efficient data querying and mutations.
+**Arugula-Week** is a full-stack web application that helps users plan and manage their meals efficiently. Users can create, update, and delete meal plans, and track the ingredients and meals they need for the week. The app is built with the MERN stack (MongoDB, Express, React, Node.js) and leverages GraphQL for efficient data querying and mutations.
 
 ### User Stories
 - **As a user**, I want to create an account and securely log in to manage my meal plans.
