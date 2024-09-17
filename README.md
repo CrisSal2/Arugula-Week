@@ -60,11 +60,6 @@
    JWT_SECRET=<your-secret-key>
    ```
 
-4. Start the backend server:
-   ```bash
-   npm start
-   ```
-
 ### Frontend Setup
 
 1. Navigate to the frontend directory:
@@ -77,9 +72,11 @@
    npm install
    ```
 
-3. Start the frontend development server:
+### Frontend and Backend Start
+
+1. Navigate to the Arugula-Week root directory:
    ```bash
-   npm start
+   npm run develop
    ```
 
 ## Usage
