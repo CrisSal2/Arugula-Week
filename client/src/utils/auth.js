@@ -2,7 +2,7 @@
 class AuthService {
     login (token) {
         localStorage.setItem('token', token)
-        window.location.assign('/myweek')
+        window.location.assign('/dashboard')
     }
     logout () {
         localStorage.removeItem('token')

@@ -115,9 +115,9 @@ function MyWeek() {
   };
 
   return (
-    <div className="px-4 sm:px-8 lg:px-64">
+    <div className="montserrat text-green-900 px-4 sm:px-8 lg:px-64">
       <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold mb-4">Select a Week</h2>
+        <h2 className="gloock-regular text-3xl font-bold mb-4">My Week</h2>
         <input
           type="date"
           value={selectedDate.format('YYYY-MM-DD')}
@@ -127,8 +127,8 @@ function MyWeek() {
       </div>
 
       <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold">
-          The week of {formattedStartOfWeek} - {formattedEndOfWeek}
+        <h2 className="text-2xl">
+          Week of {formattedStartOfWeek} - {formattedEndOfWeek}
         </h2>
       </div>
 
@@ -176,6 +176,16 @@ function MyWeek() {
           <span className="text-sm font-medium">Copy Dinner</span>
         </label>
       </div>
+      <div className="m-8 flex justify-center">
+        <button
+          onClick={handleSubmitWeek}
+          className="gloock-regular px-6 py-2 bg-amber-100 text-green-900 rounded-lg shadow hover:bg-green-900 hover:text-amber-100"
+        >
+          {loading ? 'Submitting...' : 'Add Week'}
+        </button>
+        {error && <p className="text-red-600 mt-4">{error.message}</p>}
+        {data && <p className="text-green-600 mt-4">Week submitted successfully!</p>}
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {daysOfWeek.map((day) => (
@@ -215,16 +225,6 @@ function MyWeek() {
         ))}
       </div>
 
-      <div className="mt-8 flex justify-center">
-        <button
-          onClick={handleSubmitWeek}
-          className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700"
-        >
-          {loading ? 'Submitting...' : 'Add Week'}
-        </button>
-        {error && <p className="text-red-600 mt-4">{error.message}</p>}
-        {data && <p className="text-green-600 mt-4">Week submitted successfully!</p>}
-      </div>
     </div>
   );
 }

@@ -13,7 +13,7 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <h2 className="text-3xl font-bold mb-6">Your Meal Calendar</h2>
+      <h2 className="gloock-regular text-3xl text-green-900 font-bold mb-6 text-center">Dashboard</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {weeks.map((week, index) => (
           <div key={index} className="border p-4 rounded-lg shadow-md bg-white">
