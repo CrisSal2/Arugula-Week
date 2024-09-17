@@ -16,5 +16,10 @@
   "dependencies": {
     "css": "^3.0.0",
     "tailwind": "^4.0.0"
-  }
+  },
+  "description": "## Table of Contents",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

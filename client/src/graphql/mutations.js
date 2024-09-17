@@ -37,3 +37,77 @@ export const SUBSCRIBE_PREMIUM = gql`
     }
   }
 `;
+
+
+export const ADD_WEEK = gql`
+  mutation AddWeek($weekStart: String!, $weekEnd: String!, $meals: MealInput!) {
+    addWeek(weekStart: $weekStart, weekEnd: $weekEnd, meals: $meals) {
+      _id
+      weekStart
+      weekEnd
+      meals {
+        Sunday {
+          breakfast
+          lunch
+          dinner
+        }
+        Monday {
+          breakfast
+          lunch
+          dinner
+        }
+        Tuesday {
+          breakfast
+          lunch
+          dinner
+        }
+        Wednesday {
+          breakfast
+          lunch
+          dinner
+        }
+        Thursday {
+          breakfast
+          lunch
+          dinner
+        }
+        Friday {
+          breakfast
+          lunch
+          dinner
+        }
+        Saturday {
+          breakfast
+          lunch
+          dinner
+        }
+      }
+    }
+  }
+`;
+
+
+/* export const UPDATE_MEALS = gql`
+  mutation UpdateMeals($weekId: ID!, $day: String!, $meals: MealInput!) {
+    updateMeals(weekId: $weekId, day: $day, meals: $meals) {
+      _id
+      meals {
+        [day]: {
+          breakfast
+          lunch
+          dinner
+        }
+      }
+    }
+  }
+`;
+
+
+export const REMOVE_WEEK = gql`
+  mutation RemoveWeek($weekId: ID!) {
+    removeWeek(weekId: $weekId) {
+      _id
+    }
+  }
+`;
+ */
