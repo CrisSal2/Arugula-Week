@@ -56,7 +56,7 @@ function NavBar() {
                         {navLinks.map((link) => (
                             <li key={link.to}>
                                 <Link to={link.to}>
-                                    <button className="block py-2 px-3 text-gray-900 rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white md:dark:hover:bg-transparent">
+                                    <button className="block py-2 px-3 text-green-900 rounded  md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white md:dark:hover:bg-transparent">
                                         {link.label}
                                     </button>
                                 </Link>
@@ -66,9 +66,9 @@ function NavBar() {
                             <li>
                                 <button
                                     onClick={Auth.logout}
-                                    className="block py-2 px-6 text-white rounded bg-black  md:border-0  dark:text-white hover:bg-red-800"
+                                    className="block py-2 px-6 text-green-900 rounded bg-amber-100  md:border-0  dark:text-white hover:bg-red-800 hover:text-white"
                                 >
-                                    Sign out
+                                    Sign Out
                                 </button>
                             </li>
                         )}
@@ -96,8 +96,8 @@ function NavBar() {
                             <li>
                                 <button
                                     onClick={Auth.logout}
-                                    className="block py-2 px-6 text-white rounded md:border-0  dark:text-white
-                                    bg-yellow-600 hover:bg-red-800 SignOutBtn"
+                                    className="block py-2 px-6 text-green-950 rounded md:border-0  dark:text-white
+                                    bg-amber-100 hover:bg-red-800 hover:text-white SignOutBtn"
                                 >
                                     Sign Out
                                 </button>

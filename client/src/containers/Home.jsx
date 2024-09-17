@@ -6,7 +6,7 @@ function Home() {
         <div className="Home">
             <div className="flex flex-col items-center">
                 <h1 className="my-5 text-white gloock-regular text-7xl">Sign In To Get Started</h1>
-                <Link className="sign-in-btn gloock-regular bg-white hover:bg-gray-100 font-semibold border border-gray-400 rounded shadow" to="/signin">Sign In</Link>
+                <Link className="sign-in-btn gloock-regular bg-amber-100 text-green-900 hover:bg-white font-semibold border border-gray-400 rounded shadow" to="/signin">Sign In</Link>
                 </div>
         </div>
     )
