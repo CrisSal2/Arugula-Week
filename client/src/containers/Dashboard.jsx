@@ -10,7 +10,7 @@ function Dashboard() {
   if (error) return <p>Error: {error.message}</p>;
 
   const weeks = data?.weeks || [];
-
+console.log(data);
   return (
     <div className="dashboard">
       <h2 className="gloock-regular text-3xl text-green-900 font-bold mb-6 text-center">Dashboard</h2>
