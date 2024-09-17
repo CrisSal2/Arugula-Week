@@ -1,4 +1,136 @@
-import React, { useState } from 'react';
+import { useQuery, gql } from '@apollo/client';
+import { GET_WEEKS } from '../graphql/queries';
+
+
+function Dashboard() {
+  
+  const { loading, error, data } = useQuery(GET_WEEKS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const weeks = data?.weeks || [];
+
+  return (
+    <div className="dashboard">
+      <h2 className="text-3xl font-bold mb-6">Your Meal Calendar</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {weeks.map((week, index) => (
+          <div key={index} className="border p-4 rounded-lg shadow-md bg-white">
+            <h3 className="text-xl font-bold mb-4">
+              Week: {week.weekStart} - {week.weekEnd}
+            </h3>
+            <div className="mb-2">
+              <strong>Sunday:</strong>
+              <p>Breakfast: {week.meals.Sunday.breakfast}</p>
+              <p>Lunch: {week.meals.Sunday.lunch}</p>
+              <p>Dinner: {week.meals.Sunday.dinner}</p>
+            </div>
+            <div className="mb-2">
+              <strong>Monday:</strong>
+              <p>Breakfast: {week.meals.Monday.breakfast}</p>
+              <p>Lunch: {week.meals.Monday.lunch}</p>
+              <p>Dinner: {week.meals.Monday.dinner}</p>
+            </div>
+            <div className="mb-2">
+              <strong>Tuesday:</strong>
+              <p>Breakfast: {week.meals.Tuesday.breakfast}</p>
+              <p>Lunch: {week.meals.Tuesday.lunch}</p>
+              <p>Dinner: {week.meals.Tuesday.dinner}</p>
+            </div>
+            <div className="mb-2">
+              <strong>Wednesday:</strong>
+              <p>Breakfast: {week.meals.Wednesday.breakfast}</p>
+              <p>Lunch: {week.meals.Wednesday.lunch}</p>
+              <p>Dinner: {week.meals.Wednesday.dinner}</p>
+            </div>
+            <div className="mb-2">
+              <strong>Thursday:</strong>
+              <p>Breakfast: {week.meals.Thursday.breakfast}</p>
+              <p>Lunch: {week.meals.Thursday.lunch}</p>
+              <p>Dinner: {week.meals.Thursday.dinner}</p>
+            </div>
+            <div className="mb-2">
+              <strong>Friday:</strong>
+              <p>Breakfast: {week.meals.Friday.breakfast}</p>
+              <p>Lunch: {week.meals.Friday.lunch}</p>
+              <p>Dinner: {week.meals.Friday.dinner}</p>
+            </div>
+            <div className="mb-2">
+              <strong>Saturday:</strong>
+              <p>Breakfast: {week.meals.Saturday.breakfast}</p>
+              <p>Lunch: {week.meals.Saturday.lunch}</p>
+              <p>Dinner: {week.meals.Saturday.dinner}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* import React, { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
 
 const ADD_MEAL_PLAN = gql`
@@ -60,4 +192,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Dashboard; */
