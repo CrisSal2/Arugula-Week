@@ -18,13 +18,29 @@
   border-radius: 15px;
   color: black;
 }
+.gloock-regular {
+  font-family: "Gloock", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/* // <weight>: Use a value from 100 to 900 */
+
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+
 
 .sign-in-btn {
   padding: 10px 30px;
-  background-color: #63804B;
-  color: white;
+  /* background-color: #63804B; */
   border: none;
-  border-radius: 15px;
+  font-size: 1.5rem;
 }
 
 .dayColumn {

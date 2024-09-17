@@ -26,12 +26,12 @@ function signIn() {
     }
   };
     return(
-        <div className="Sign-In">
+        <div className="Sign-In gloock-regular">
             <section className="bg-gray-50 dark:bg-gray-900">
 <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
   <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
     <div className="max-w-md w-full p-6">
-      <h1 className="text-3xl font-semibold mb-6 text-black text-center">Sign in</h1>
+      <h1 className="text-3xl font-semibold mb-6 text-black text-center">Sign In</h1>
       <form 
       onSubmit={handleSubmit}
       className="signIn-form space-y-4 md:space-y-6">
@@ -43,7 +43,7 @@ function signIn() {
 
 
         </div>
-        <div className="">
+        <div className="gloock-regular">
           <label htmlFor="password-signIn" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password:</label>
           <input 
           onChange={(e) => setPassword(e.target.value)}
@@ -52,8 +52,8 @@ function signIn() {
 
          
         </div>
-        <div className="my-3">
-          <button className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 my-4 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Sign in</button>
+        <div className="my-3 gloock-regular">
+          <button className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 my-4 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Sign In</button>
           <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                       Don't have an account? <a href="/signup" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up here</a>
                   </p>
