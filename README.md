@@ -45,8 +45,8 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/mealprep-app.git
-   cd mealprep-app/server
+   git clone https://github.com/your-username/Arugula-Week.git
+   cd Arugula-Week/server
    ```
 
 2. Install the necessary dependencies:
