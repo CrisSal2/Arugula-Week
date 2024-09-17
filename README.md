@@ -32,7 +32,7 @@
 
 ## Technologies Used
 
-- **Frontend**: React, Apollo Client, Material-UI (or Bootstrap, or Tailwind CSS)
+- **Frontend**: React, Apollo Client, Tailwind CSS
 - **Backend**: Node.js, Express, GraphQL, MongoDB, Mongoose
 - **Database**: MongoDB (using MongoDB Atlas)
 - **Authentication**: JWT for user authentication
@@ -45,7 +45,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/Arugula-Week.git
+   git clone https://github.com/CrisSal2/Arugula-Week.git
    cd Arugula-Week/server
    ```
 
@@ -160,7 +160,9 @@ This project is licensed under the MIT License.
 
 ## Contributors
 
-- [Your Name](https://github.com/your-username)
-- [Contributor Name 1](https://github.com/contributor-username)
-- [Contributor Name 2](https://github.com/contributor-username)
+- [Christian Salgado](https://github.com/CrisSal2)
+- [Truong Ngo](https://github.com/ngojohn2002)
+- [Heather Weltzien](https://github.com/hweltzien)
+- [Jason Y. Liu](https://github.com/jy8liu)
+- [Jesus Ruiz Gutierrez](https://github.com/jesse437)
 
