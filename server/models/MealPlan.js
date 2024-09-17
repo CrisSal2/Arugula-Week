@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 
 const mealSchema = new mongoose.Schema({
-  name: {
+  breakfast: {
     type: String,
     required: true,
   },
-  calories: {
-    type: Number,
+  lunch: {
+    type: String,
     required: true,
   },
-  description: {
+  dinner: {
     type: String,
     required: true,
   },

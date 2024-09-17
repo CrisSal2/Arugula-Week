@@ -53,11 +53,7 @@ const typeDefs = gql`
 
     subscribePremium(planId: String!, paymentToken: String!): PaymentStatus
   }
-    input MealInput {
-    name: String!
-    calories: Int!
-    description: String!
-  }
+  
 
   input MealInput {
   breakfast: String
