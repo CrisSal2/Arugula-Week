@@ -4,9 +4,9 @@ import {Link} from "react-router-dom"
 function Home() {
     return(
         <div className="Home">
-            <div className="lander">
-                <h1 className="my-5">Sign in to Get Started</h1>
-                <Link className="sign-in-btn" to="/signin">Sign in</Link>
+            <div className="flex flex-col items-center">
+                <h1 className="my-5 text-white gloock-regular text-7xl">Sign In To Get Started</h1>
+                <Link className="sign-in-btn gloock-regular bg-white hover:bg-gray-100 font-semibold border border-gray-400 rounded shadow" to="/signin">Sign In</Link>
                 </div>
         </div>
     )
