@@ -9,7 +9,7 @@ import MyWeek from './containers/MyWeek';
 import SignUp from './containers/SignUp';
 import SignIn from './containers/SignIn';
 import SignOut from './containers/SignOut';
-// import ErrorPage from './containers/ErrorPage';
+import ErrorPage from './containers/ErrorPage';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +38,9 @@ const router = createBrowserRouter([
       }, {
         path: '/signout',
         element: <SignOut />
+      }, {
+        path: '/error',
+        element: <ErrorPage />
       }
 
     ]
