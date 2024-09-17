@@ -39,11 +39,7 @@
 .sign-in-btn {
   padding: 10px 30px;
   /* background-color: #63804B; */
-  background-color: white;
-  color: #63804B;
   border: none;
-  border-radius: 15px;
-  
   font-size: 1.5rem;
 }
 

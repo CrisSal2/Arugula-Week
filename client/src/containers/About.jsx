@@ -2,11 +2,11 @@ import React from "react";
 
 function About() {
   return (
-    <section className="About bg-white dark:bg-gray-900">
+    <section className="About bg-white dark:bg-gray-900 text-green-900">
       <div className="gap-16 py-8 px-4 mx-auto max-w-4xl lg:py-16 lg:px-6">
-        <h1 className="gloock-regular text-3xl tracking-tight sm:text-4xl font-extrabold text-gray-900 dark:text-white text-center">About Us</h1>
+        <h1 className="gloock-regular text-3xl tracking-tight sm:text-4xl font-extrabold dark:text-white text-center">About Us</h1>
         <p className="montserrat mt-2 text-lg leading-8 max-w-2xl mx-auto">
-          Welcome to Arugula Week, your all-in-one solution for easy, healthy, and personalized meal planning! We know how challenging it can be to juggle a busy lifestyle while trying to stay on top of your health goals, plan meals, and accommodate family preferences. That's why we created Arugula Week - to simplify meal planning, save time, and help you eat better every day.
+          Welcome to Arugula Week, your all-in-one solution for easy meal planning! We know how challenging it can be to juggle a busy lifestyle while trying to stay on top of your health goals. That's why we created Arugula Week - to simplify meal planning, save time, and help you eat better every day.
         </p>
       </div>
 
@@ -23,7 +23,7 @@ function About() {
           className="m-5 object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
         />
         <img
-          src="/images/Heather.jpg"
+          src="/images/Heather.png"
           alt="Heather Weltzien"
           className="m-5 object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
         />
@@ -51,6 +51,11 @@ function About() {
           Our mission is to empower individuals and families to take control of their nutrition by reducing the stress of planning, shopping, and deciding what to eat every day. We believe healthy eating should be enjoyable, accessible, and effortless.
         </p>
 
+
+        <h1 className="gloock-regular text-3xl font-bold text-center mt-8">Our Vision</h1>
+        <p className="montserrat mt-2 text-lg leading-8 max-w-2xl mx-auto">
+          At Arugula Week, we’re not just about food—we’re about creating sustainable habits that enhance your life. We envision a world where people feel empowered by what they eat, not overwhelmed. Join us on the journey to better eating, smarter planning, and healthier living.
+        </p>
         <h1 className="gloock-regular text-3xl font-bold text-center mt-8">What We Offer</h1>
         <ul className="montserrat mt-2 text-lg leading-8 max-w-2xl mx-auto list-disc pl-5">
           <li>Personalized Meal Logging: Easily input what you're eating for each meal, whether it's breakfast, lunch, dinner, or snacks. Keep track of your meals with just a few taps.</li>
@@ -58,11 +63,6 @@ function About() {
           <li>Weekly Meal Overview: View your entire week's meals on a single screen. Track your progress, identify trends, and get a clear picture of your eating habits across multiple days.</li>
           <li>Saved Weekly Dashboards: Each week's meal log is saved in your personalized dashboard for easy reference. Review past weeks to track progress, revisit favorite meals, or stay accountable to your goals.</li>
         </ul>
-
-        <h1 className="gloock-regular text-3xl font-bold text-center mt-8">Our Vision</h1>
-        <p className="montserrat mt-2 text-lg leading-8 max-w-2xl mx-auto">
-          At Arugula Week, we’re not just about food—we’re about creating sustainable habits that enhance your life. We envision a world where people feel empowered by what they eat, not overwhelmed. Join us on the journey to better eating, smarter planning, and healthier living.
-        </p>
       </div>
     </section>
   );
