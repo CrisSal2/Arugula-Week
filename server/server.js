@@ -12,8 +12,13 @@ const cors = require("cors");
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 4000;
 
-app.use(cors());
+const corsOptions = {
+  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
 // Apollo Server setup
 const server = new ApolloServer({
@@ -31,7 +36,7 @@ const startServer = async () => {
     .then(() => console.log("MongoDB connected"))
     .catch((err) => console.error(err));
 
-  app.listen({ port: 4000 }, () =>
+  app.listen({ port: PORT }, () =>
     console.log(`Server ready at http://localhost:4000${server.graphqlPath}`)
   );
 };
