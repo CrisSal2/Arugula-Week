@@ -26,6 +26,14 @@ const resolvers = {
       const mealPlan = await MealPlan.findById(mealPlanId);
       return mealPlan.meals.id(mealId); // Retrieve the meal by ID from the meal plan
     },
+    weeks: async () => {
+      try {
+        return await Week.find(); // Replace with actual data-fetching logic
+      } catch (error) {
+        console.error("Error fetching weeks:", error);
+        throw new Error("Failed to fetch weeks");
+      }
+    },
   },
   Mutation: {
     signup: async (parent, { username, email, password }) => {
