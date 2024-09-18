@@ -2,7 +2,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { GET_WEEKS } from '../graphql/queries';
 import { Link } from 'react-router-dom';
-import { UPDATE_WEEK } from '../graphql/mutations';   ///////////////////////////////////////// When fixed we can add DELET_WEEK again
+import { UPDATE_WEEK } from '../graphql/mutations';   ///////////////////////////////////////// When fixed we can add DELETE_WEEK again
 import dayjs from 'dayjs';
 
 function Dashboard() {
@@ -17,53 +17,13 @@ function Dashboard() {
 
   const weeks = data?.weeks || [];
 
-  const handleInputChange = (weekId, day, mealType, value) => {
-    setEditableWeek((prev) => ({
-      ...prev,
-      [weekId]: {
-        ...prev[weekId],
-        meals: {
-          ...prev[weekId].meals,
-          [day]: {
-            ...prev[weekId].meals[day],
-            [mealType]: value,
-          },
-        },
-      },
-    }));
-  };
-
-  const handleUpdateWeek = async (weekId) => {
-    const weekToUpdate = editableWeek[weekId];
-    try {
-      await updateWeek({
-        variables: {
-          weekId,
-          meals: weekToUpdate.meals,
-        },
-      });
-      console.log('Week updated successfully');
-    } catch (error) {
-      console.error('Error updating week:', error);
-    }
-  };
-
-  const handleDeleteWeek = async (weekId) => {
-    try {
-      await deleteWeek({ variables: { weekId } });
-      console.log('Week deleted successfully');
-    } catch (error) {
-      console.error('Error deleting week:', error);
-    }
-  };
-
   return (
-    <div className="dashboard p-6 h-screen overflow-y-auto">
+    <div className="dashboard p-6 h-screen overflow-y-auto bg-gray-100">
       <h2 className="gloock-regular text-3xl text-green-900 font-bold mb-6 text-center">Dashboard</h2>
 
       {/* Weeks Container */}
       {weeks.map((week) => (
-        <div key={week._id} className="mb-8">  {/* Unique key for weeks */}
+        <div key={week._id} className="mb-8 bg-white shadow-lg rounded-lg p-6">
           {/* Header for Week of */}
           <div className="text-center mb-4">
             <h3 className="text-2xl font-bold text-gray-800">
@@ -71,68 +31,53 @@ function Dashboard() {
             </h3>
 
             <span>
-              <Link to={`/myweek/${week._id}`} className="text-green-900 underline">Edit</Link>
-              <button className="text-red-500 underline ml-2">Delete</button>
+              <Link to={`/myweek/${week._id}`} className="text-green-900 underline hover:text-green-700">Edit</Link>
+              <button className="text-red-500 underline ml-4 hover:text-red-700">Delete</button>
             </span>
           </div>
 
           {/* Weekly Grid */}
-          <div className="grid grid-cols-7 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6">
             {['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map((day) => (
-              <div key={`${week._id}-${day}`} className="bg-gray-50 border rounded-lg p-4 relative"> {/* Unique key for days */}
+              <div
+                key={`${week._id}-${day}`}
+                className="bg-white border border-gray-200 shadow-md rounded-lg p-4 relative transition-all hover:shadow-lg transform hover:scale-105"
+              >
                 {/* Day Content */}
-                <h4 className="font-bold text-lg text-center mb-2">{day}</h4>
+                <h4 className="font-medium text-lg text-center text-gray-900">{day}</h4>
+                
+                {/* Divider */}
+                <hr className="my-4 border-gray-300" />
 
-                <div className="mb-2">
-                  <label className="block text-sm font-medium">Breakfast:</label>
-                  <input
-                    type="text"
-                    value={editableWeek?.[week._id]?.meals?.[day]?.breakfast || week.meals[day].breakfast}
-                    onChange={(e) => handleInputChange(week._id, day, 'breakfast', e.target.value)}
-                    className="mt-1 block w-full p-2 border rounded-md"
-                  />
-                </div>
-                <div className="mb-2">
-                  <label className="block text-sm font-medium">Lunch:</label>
-                  <input
-                    type="text"
-                    value={editableWeek?.[week._id]?.meals?.[day]?.lunch || week.meals[day].lunch}
-                    onChange={(e) => handleInputChange(week._id, day, 'lunch', e.target.value)}
-                    className="mt-1 block w-full p-2 border rounded-md"
-                  />
-                </div>
-                <div className="mb-2">
-                  <label className="block text-sm font-medium">Dinner:</label>
-                  <input
-                    type="text"
-                    value={editableWeek?.[week._id]?.meals?.[day]?.dinner || week.meals[day].dinner}
-                    onChange={(e) => handleInputChange(week._id, day, 'dinner', e.target.value)}
-                    className="mt-1 block w-full p-2 border rounded-md"
-                  />
+                {/* Meals */}
+                <div className="text-center">
+                  <div className="mb-4">
+                    <label className="block text-xs font-semibold text-gray-500 uppercase mb-1">Breakfast</label>
+                    <p className="text-sm text-gray-900 font-medium">
+                      {week.meals[day]?.breakfast || 'No data'}
+                    </p>
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-xs font-semibold text-gray-500 uppercase mb-1">Lunch</label>
+                    <p className="text-sm text-gray-900 font-medium">
+                      {week.meals[day]?.lunch || 'No data'}
+                    </p>
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-xs font-semibold text-gray-500 uppercase mb-1">Dinner</label>
+                    <p className="text-sm text-gray-900 font-medium">
+                      {week.meals[day]?.dinner || 'No data'}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Update and Delete Buttons */}
-          <div className="flex justify-between mt-4">
-            <button
-              onClick={() => handleUpdateWeek(week._id)}
-              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
-            >
-              Update Week
-            </button>
-            <button
-              onClick={() => handleDeleteWeek(week._id)}
-              className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-700"
-            >
-              Delete Week
-            </button>
           </div>
         </div>
       ))}
     </div>
   );
 }
+
 
 export default Dashboard;
