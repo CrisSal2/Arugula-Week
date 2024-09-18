@@ -36,9 +36,9 @@ const startServer = async () => {
     .then(() => console.log("MongoDB connected"))
     .catch((err) => console.error(err));
 
-  app.listen({ port: PORT }, () =>
-    console.log(`Server ready at http://localhost:4000${server.graphqlPath}`)
-  );
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
 };
 
 startServer();
