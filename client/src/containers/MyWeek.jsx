@@ -108,12 +108,15 @@ function MyWeek() {
       weekStart: formattedStartOfWeek,
       weekEnd: formattedEndOfWeek,
     };
-
+  
     try {
       const response = await addWeek({ variables });
       if (response.data) {
         console.log('Week added:', response.data);
-        navigate('/dashboard');
+  
+        // Navigate to /dashboard and reload the page
+        navigate('/dashboard', { replace: true });
+        window.location.reload();
       }
     } catch (error) {
       console.error('Error adding week:', error);
