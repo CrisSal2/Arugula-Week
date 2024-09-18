@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { GET_WEEKS } from '../graphql/queries';
+import { Link } from 'react-router-dom';
 
 function Dashboard() {
   const { loading, error, data } = useQuery(GET_WEEKS);
@@ -8,7 +9,7 @@ function Dashboard() {
   if (error) return <p>Error: {error.message}</p>;
 
   const weeks = data?.weeks || [];
-
+console.log(weeks);
   return (
     <div className="dashboard p-6 h-screen overflow-y-auto">
       <h2 className="gloock-regular text-3xl text-green-900 font-bold mb-6 text-center">Dashboard</h2>
@@ -21,6 +22,11 @@ function Dashboard() {
             <h3 className="text-2xl font-bold text-gray-800">
               Week of {week.weekStart} - {week.weekEnd}
             </h3>
+
+            <span>
+              <Link to={`/myweek/${week._id}`} className="text-green-900 underline">Edit</Link>
+              <button className="text-red-500 underline ml-2">Delete</button>
+            </span>
           </div>
 
           {/* Days of the Week Header */}
