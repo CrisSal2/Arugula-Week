@@ -10,7 +10,7 @@
     "install": "cd server && npm install && cd ../client && npm install",
     "seed": "cd server && npm run seed",
     "build": "npm run install && cd server && npm run build && cd ../client && npm run build",
-    "render-build": "npm run build" 
+    "render-build": "npm run build"
   },
   "devDependencies": {
     "concurrently": "^5.3.0"
