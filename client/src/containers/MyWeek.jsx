@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate
 import dayjs from 'dayjs';
 import isoWeek from 'dayjs/plugin/isoWeek';
 
@@ -69,6 +70,8 @@ function MyWeek() {
   const [copyBreakfast, setCopyBreakfast] = useState(false);
   const [copyLunch, setCopyLunch] = useState(false);
   const [copyDinner, setCopyDinner] = useState(false);
+  
+  const navigate = useNavigate();
 
   const startOfWeek = selectedDate.startOf('week');
   const endOfWeek = dayjs(startOfWeek).add(6, 'day');
@@ -108,7 +111,10 @@ function MyWeek() {
 
     try {
       const response = await addWeek({ variables });
-      console.log('Week added:', response.data);
+      if (response.data) {
+        console.log('Week added:', response.data);
+        navigate('/dashboard');
+      }
     } catch (error) {
       console.error('Error adding week:', error);
     }
@@ -224,10 +230,10 @@ function MyWeek() {
           </div>
         ))}
       </div>
-
     </div>
   );
 }
 
 export default MyWeek;
+
 
