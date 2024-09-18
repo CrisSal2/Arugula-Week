@@ -6,16 +6,15 @@ import './index.css';
 import App from './App';
 
 const client = new ApolloClient({
-  uri: '/graphql', 
+  uri: process.env.REACT_APP_API_URL + '/graphql',
   cache: new InMemoryCache(),
-  request: operation => {
+  request: (operation) => {
     operation.setContext({
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}` || ''
-      }
-    })
-  }
-
+        authorization: `Bearer ${localStorage.getItem("token")}` || "",
+      },
+    });
+  },
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
