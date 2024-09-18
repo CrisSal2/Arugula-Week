@@ -4,8 +4,8 @@ import { gql } from '@apollo/client';
 export const GET_WEEKS = gql`
   query GetWeeks {
     weeks {
-      weekStart
       _id
+      weekStart
       weekEnd
       meals {
         Sunday {
