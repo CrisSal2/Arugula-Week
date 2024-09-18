@@ -15,7 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 const corsOptions = {
-  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  origin: process.env.CLIENT_URL || "https://arugula-week-864c.onrender.com",
   credentials: true,
 };
 app.use(cors(corsOptions));
