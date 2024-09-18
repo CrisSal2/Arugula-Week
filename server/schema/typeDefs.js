@@ -38,6 +38,7 @@ const typeDefs = gql`
     getMealPlanById(id: ID!): MealPlan
     getMealById(mealPlanId: ID!, mealId: ID!): Meal
     weeks: [Week]
+    week(id: ID!): Week
   }
 
   type Mutation {
@@ -52,6 +53,8 @@ const typeDefs = gql`
     deleteMeal(mealPlanId: ID!, mealId: ID!): MealPlan
 
     subscribePremium(planId: String!, paymentToken: String!): PaymentStatus
+    addWeek(meals: WeekInput!, weekStart: String!, weekEnd: String!): Week
+    updateWeek(id: ID!, meals: WeekInput, weekStart: String, weekEnd: String): Week
   }
   
 
@@ -71,9 +74,7 @@ input WeekInput {
   Saturday: MealInput!
 }
 
-type Mutation {
-  addWeek(meals: WeekInput!, weekStart: String!, weekEnd: String!): Week
-}
+
 
 type Week {
   _id: ID!

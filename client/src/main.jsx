@@ -10,6 +10,7 @@ import SignUp from './containers/SignUp';
 import SignIn from './containers/SignIn';
 import SignOut from './containers/SignOut';
 import ErrorPage from './containers/ErrorPage';
+import EditWeek from './containers/EditWeek';
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,11 @@ const router = createBrowserRouter([
       }, {
         path: '/myweek',
         element: <MyWeek />
-      }, {
+      }, 
+      {
+        path: '/myweek/:id',
+        element: <EditWeek />
+      },{
         path: '/about',
         element: <About />
       }, {

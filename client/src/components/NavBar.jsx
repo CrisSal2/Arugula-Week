@@ -8,7 +8,7 @@ const publicLinks = [
     { label: 'Sign In', to: '/signin' },
 ];
 const loggedInLinks = [
-    
+
     { label: 'About', to: '/about' },
     { label: 'My Week', to: '/myweek' },
     { label: 'Dashboard', to: '/dashboard' },
@@ -21,10 +21,11 @@ function NavBar() {
     return (
         <nav className="navbar bg-white border-gray-200 dark:bg-gray-900 gloock-regular navbar">
             <div className="navbar_container max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <img src="../images/leaf.png" alt="logo" className="h-40"/>
-
+                <Link to="/">
+                    <img src="../images/leaf.png" alt="logo" className="h-40" />
+                </Link>
                 {/* Hamburger Menu Button */}
-                <button 
+                <button
                     onClick={() => setIsOpen(!isOpen)}
                     data-collapse-toggle="navbar-default"
                     type="button"
@@ -77,9 +78,8 @@ function NavBar() {
 
                 {/* Mobile Navigation Links */}
                 <div
-                    className={`${
-                        isOpen ? 'block' : 'hidden'
-                    } w-full md:hidden`}
+                    className={`${isOpen ? 'block' : 'hidden'
+                        } w-full md:hidden`}
                     id="mobile-menu"
                 >
                     <ul className="flex flex-col items-end p-4 mt-4 border border-gray-100 rounded-lg">
@@ -104,7 +104,7 @@ function NavBar() {
                             </li>
                         )}
                     </ul>
-                    </div>
+                </div>
             </div>
         </nav>
     );

@@ -34,6 +34,14 @@ const resolvers = {
         throw new Error("Failed to fetch weeks");
       }
     },
+    week: async (parent, { id }) => {
+      try {
+        return await Week.findById(id); 
+      } catch (error) {
+        console.error("Error fetching week:", error);
+        throw new Error("Failed to fetch week");
+      }
+    },
   },
   Mutation: {
     signup: async (parent, { username, email, password }) => {
@@ -143,7 +151,16 @@ const resolvers = {
       const newWeek = new Week({ meals, weekStart, weekEnd });
       await newWeek.save();
       return newWeek;
-    },    
+    }, 
+    updateWeek: async (parent, { id, meals, weekStart, weekEnd }) => {
+      try {
+        return await Week.findByIdAndUpdate
+        (id, { meals, weekStart, weekEnd }, { new: true });
+      } catch (error) {
+        console.error("Error updating week:", error);
+        throw new Error("Failed to update week");
+      }
+    },   
     subscribePremium: async (parent, { planId, paymentToken }, context) => {
       if (!context.user) {
         throw new Error("Not authenticated");
