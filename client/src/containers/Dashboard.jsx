@@ -1,6 +1,7 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { GET_WEEKS } from '../graphql/queries';
+import { Link } from 'react-router-dom';
 import { UPDATE_WEEK, DELETE_WEEK } from '../graphql/mutations'; // Assuming you have these mutations ready
 import dayjs from 'dayjs';
 
@@ -68,6 +69,11 @@ function Dashboard() {
             <h3 className="text-2xl font-bold text-gray-800">
               Week of {dayjs(week.weekStart).format('MM/DD/YYYY')} - {dayjs(week.weekEnd).format('MM/DD/YYYY')}
             </h3>
+
+            <span>
+              <Link to={`/myweek/${week._id}`} className="text-green-900 underline">Edit</Link>
+              <button className="text-red-500 underline ml-2">Delete</button>
+            </span>
           </div>
 
           {/* Weekly Grid */}

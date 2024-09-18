@@ -87,26 +87,48 @@ export const ADD_WEEK = gql`
 `;
 
 export const UPDATE_WEEK = gql`
-  mutation UpdateWeek($id: ID!, $sunday: String, $monday: String, $tuesday: String, $wednesday: String, $thursday: String, $friday: String, $saturday: String) {
-    updateWeek(id: $id, sunday: $sunday, monday: $monday, tuesday: $tuesday, wednesday: $wednesday, thursday: $thursday, friday: $friday, saturday: $saturday) {
-      id
+  mutation UpdateWeek($id: ID!, $weekStart: String!, $weekEnd: String!, $meals: WeekInput!) {
+    updateWeek(id: $id, weekStart: $weekStart, weekEnd: $weekEnd, meals: $meals) {
+      _id
       weekStart
       weekEnd
-      sunday
-      monday
-      tuesday
-      wednesday
-      thursday
-      friday
-      saturday
-    }
-  }
-`;
-
-export const DELETE_WEEK = gql`
-  mutation DeleteWeek($id: ID!) {
-    deleteWeek(id: $id) {
-      id
+      meals {
+        Sunday {
+          breakfast
+          lunch
+          dinner
+        }
+        Monday {
+          breakfast
+          lunch
+          dinner
+        }
+        Tuesday {
+          breakfast
+          lunch
+          dinner
+        }
+        Wednesday {
+          breakfast
+          lunch
+          dinner
+        }
+        Thursday {
+          breakfast
+          lunch
+          dinner
+        }
+        Friday {
+          breakfast
+          lunch
+          dinner
+        }
+        Saturday {
+          breakfast
+          lunch
+          dinner
+        }
+      }
     }
   }
 `;
