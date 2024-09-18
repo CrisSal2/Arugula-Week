@@ -4,14 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "node server/server.js --ignore client",
-    "start1": "cd client && npm start",
+    "start": "node server/server.js",
+    "client-start": "cd client && npm start",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
-    "install": "cd server && npm i && cd ../client && npm i --production=false",
+    "install": "cd server && npm install && cd ../client && npm install",
     "seed": "cd server && npm run seed",
-    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
-    "build": "npm run install-all && cd server && npm run build && cd ../client && npm run build",
-    "render-build":"npm install && npm run build"
+    "build": "npm run install && cd server && npm run build && cd ../client && npm run build",
+    "render-build": "npm run build" 
   },
   "devDependencies": {
     "concurrently": "^5.3.0"
