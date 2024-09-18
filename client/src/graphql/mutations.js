@@ -40,7 +40,7 @@ export const SUBSCRIBE_PREMIUM = gql`
 
 
 export const ADD_WEEK = gql`
-  mutation AddWeek($weekStart: String!, $weekEnd: String!, $meals: MealInput!) {
+  mutation AddWeek($weekStart: String!, $weekEnd: String!, $meals: WeekInput!) {
     addWeek(weekStart: $weekStart, weekEnd: $weekEnd, meals: $meals) {
       _id
       weekStart
@@ -85,6 +85,7 @@ export const ADD_WEEK = gql`
     }
   }
 `;
+
 
 
 /* export const UPDATE_MEALS = gql`

@@ -56,19 +56,19 @@ const typeDefs = gql`
   
 
   input MealInput {
-  breakfast: String
-  lunch: String
-  dinner: String
+  breakfast: String!
+  lunch: String!
+  dinner: String!
 }
 
 input WeekInput {
-  Sunday: MealInput
-  Monday: MealInput
-  Tuesday: MealInput
-  Wednesday: MealInput
-  Thursday: MealInput
-  Friday: MealInput
-  Saturday: MealInput
+  Sunday: MealInput!
+  Monday: MealInput!
+  Tuesday: MealInput!
+  Wednesday: MealInput!
+  Thursday: MealInput!
+  Friday: MealInput!
+  Saturday: MealInput!
 }
 
 type Mutation {
@@ -76,25 +76,27 @@ type Mutation {
 }
 
 type Week {
+  _id: ID!
   weekStart: String!
   weekEnd: String!
-  meals: Meals
+  meals: Meals!
 }
 
+
 type Meals {
-  Sunday: Meal
-  Monday: Meal
-  Tuesday: Meal
-  Wednesday: Meal
-  Thursday: Meal
-  Friday: Meal
-  Saturday: Meal
+  Sunday: Meal!
+  Monday: Meal!
+  Tuesday: Meal!
+  Wednesday: Meal!
+  Thursday: Meal!
+  Friday: Meal!
+  Saturday: Meal!
 }
 
 type Meal {
-  breakfast: String
-  lunch: String
-  dinner: String
+  breakfast: String!
+  lunch: String!
+  dinner: String!
 }
   
 
