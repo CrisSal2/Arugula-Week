@@ -2,15 +2,15 @@ import { useQuery, useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { GET_WEEKS } from '../graphql/queries';
 import { Link } from 'react-router-dom';
-import { UPDATE_WEEK, DELETE_WEEK } from '../graphql/mutations'; // Assuming you have these mutations ready
+import { UPDATE_WEEK } from '../graphql/mutations';   ///////////////////////////////////////// When fixed we can add DELET_WEEK again
 import dayjs from 'dayjs';
 
 function Dashboard() {
   const { loading, error, data } = useQuery(GET_WEEKS);
   const [updateWeek] = useMutation(UPDATE_WEEK);
-  const [deleteWeek] = useMutation(DELETE_WEEK);
+  /* const [deleteWeek] = useMutation(DELETE_WEEK); */    //////////////////////////////////////////////////////////////// Need update
 
-  const [editableWeek, setEditableWeek] = useState(null); // Track the currently edited week
+  const [editableWeek, setEditableWeek] = useState(null);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -62,8 +62,8 @@ function Dashboard() {
       <h2 className="gloock-regular text-3xl text-green-900 font-bold mb-6 text-center">Dashboard</h2>
 
       {/* Weeks Container */}
-      {weeks.map((week, index) => (
-        <div key={week.id} className="mb-8">
+      {weeks.map((week) => (
+        <div key={week._id} className="mb-8">  {/* Unique key for weeks */}
           {/* Header for Week of */}
           <div className="text-center mb-4">
             <h3 className="text-2xl font-bold text-gray-800">
@@ -79,7 +79,7 @@ function Dashboard() {
           {/* Weekly Grid */}
           <div className="grid grid-cols-7 gap-4">
             {['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map((day) => (
-              <div key={day} className="bg-gray-50 border rounded-lg p-4 relative">
+              <div key={`${week._id}-${day}`} className="bg-gray-50 border rounded-lg p-4 relative"> {/* Unique key for days */}
                 {/* Day Content */}
                 <h4 className="font-bold text-lg text-center mb-2">{day}</h4>
 
@@ -87,8 +87,8 @@ function Dashboard() {
                   <label className="block text-sm font-medium">Breakfast:</label>
                   <input
                     type="text"
-                    value={editableWeek?.[week.id]?.meals?.[day]?.breakfast || week.meals[day].breakfast}
-                    onChange={(e) => handleInputChange(week.id, day, 'breakfast', e.target.value)}
+                    value={editableWeek?.[week._id]?.meals?.[day]?.breakfast || week.meals[day].breakfast}
+                    onChange={(e) => handleInputChange(week._id, day, 'breakfast', e.target.value)}
                     className="mt-1 block w-full p-2 border rounded-md"
                   />
                 </div>
@@ -96,8 +96,8 @@ function Dashboard() {
                   <label className="block text-sm font-medium">Lunch:</label>
                   <input
                     type="text"
-                    value={editableWeek?.[week.id]?.meals?.[day]?.lunch || week.meals[day].lunch}
-                    onChange={(e) => handleInputChange(week.id, day, 'lunch', e.target.value)}
+                    value={editableWeek?.[week._id]?.meals?.[day]?.lunch || week.meals[day].lunch}
+                    onChange={(e) => handleInputChange(week._id, day, 'lunch', e.target.value)}
                     className="mt-1 block w-full p-2 border rounded-md"
                   />
                 </div>
@@ -105,8 +105,8 @@ function Dashboard() {
                   <label className="block text-sm font-medium">Dinner:</label>
                   <input
                     type="text"
-                    value={editableWeek?.[week.id]?.meals?.[day]?.dinner || week.meals[day].dinner}
-                    onChange={(e) => handleInputChange(week.id, day, 'dinner', e.target.value)}
+                    value={editableWeek?.[week._id]?.meals?.[day]?.dinner || week.meals[day].dinner}
+                    onChange={(e) => handleInputChange(week._id, day, 'dinner', e.target.value)}
                     className="mt-1 block w-full p-2 border rounded-md"
                   />
                 </div>
@@ -117,13 +117,13 @@ function Dashboard() {
           {/* Update and Delete Buttons */}
           <div className="flex justify-between mt-4">
             <button
-              onClick={() => handleUpdateWeek(week.id)}
+              onClick={() => handleUpdateWeek(week._id)}
               className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
             >
               Update Week
             </button>
             <button
-              onClick={() => handleDeleteWeek(week.id)}
+              onClick={() => handleDeleteWeek(week._id)}
               className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-700"
             >
               Delete Week
