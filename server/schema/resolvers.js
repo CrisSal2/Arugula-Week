@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const MealPlan = require("../models/MealPlan");
+const Week = require("../models/MealPlan");
 const { processPayment } = require("../utils/payment");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
@@ -130,6 +131,11 @@ const resolvers = {
         throw new Error("Failed to delete meal plan");
       }
     },
+    addWeek: async (parent, { meals, weekStart, weekEnd }) => {
+      const newWeek = new Week({ meals, weekStart, weekEnd });
+      await newWeek.save();
+      return newWeek;
+    },    
     subscribePremium: async (parent, { planId, paymentToken }, context) => {
       if (!context.user) {
         throw new Error("Not authenticated");

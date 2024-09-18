@@ -15,25 +15,26 @@ const mealSchema = new mongoose.Schema({
   },
 });
 
-const mealPlanSchema = new mongoose.Schema({
-  name: { // Meal Name
-    type: String,
+const weekSchema = new mongoose.Schema({
+  weekStart: {
+    type: String, // Can be a date string or week number
     required: true,
   },
-  description: { // Meal Description
+  weekEnd: {
     type: String,
     required: true,
   },
   meals: {
-    type: [mealSchema], // Array of meals
-    required: true,
-  },
-  url: { // image URL
-    type: String,
-    required: true,
+    Sunday: mealSchema,
+    Monday: mealSchema,
+    Tuesday: mealSchema,
+    Wednesday: mealSchema,
+    Thursday: mealSchema,
+    Friday: mealSchema,
+    Saturday: mealSchema,
   },
 });
 
-const MealPlan = mongoose.model("MealPlan", mealPlanSchema);
+const Week = mongoose.model("Week", weekSchema);
 
-module.exports = MealPlan;
+module.exports = Week;

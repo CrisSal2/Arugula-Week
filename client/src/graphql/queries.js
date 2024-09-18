@@ -5,6 +5,7 @@ export const GET_WEEKS = gql`
   query GetWeeks {
     weeks {
       weekStart
+      _id
       weekEnd
       meals {
         Sunday {
