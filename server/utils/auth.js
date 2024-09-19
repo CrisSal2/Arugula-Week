@@ -23,6 +23,7 @@ module.exports = {
     }
 
     if (!token) {
+      console.log("No token found");
       return req;
     }
 
@@ -30,6 +31,7 @@ module.exports = {
       // Verify token and attach user to request
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
+      console.log("User data:", req.user);
     } catch (err) {
       console.log("Invalid token:", err.message);
     }

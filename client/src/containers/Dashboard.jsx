@@ -2,13 +2,13 @@ import { useQuery, useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { GET_WEEKS } from '../graphql/queries';
 import { Link } from 'react-router-dom';
-import { UPDATE_WEEK } from '../graphql/mutations';   ///////////////////////////////////////// When fixed we can add DELETE_WEEK again
+import { UPDATE_WEEK, DELETE_WEEK } from '../graphql/mutations';   ///////////////////////////////////////// When fixed we can add DELETE_WEEK again
 import dayjs from 'dayjs';
 
 function Dashboard() {
   const { loading, error, data } = useQuery(GET_WEEKS);
   const [updateWeek] = useMutation(UPDATE_WEEK);
-  /* const [deleteWeek] = useMutation(DELETE_WEEK); */    //////////////////////////////////////////////////////////////// Need update
+  const [deleteWeek] = useMutation(DELETE_WEEK); 
 
   const [editableWeek, setEditableWeek] = useState(null);
 
@@ -22,7 +22,7 @@ function Dashboard() {
       <h2 className="gloock-regular text-3xl text-green-900 font-bold mb-6 text-center">Dashboard</h2>
 
       {/* Weeks Container */}
-      {weeks.map((week) => (
+      {weeks.length !== 0 && weeks.map((week) => (
         <div key={week._id} className="mb-8 bg-white shadow-lg rounded-lg p-6">
           {/* Header for Week of */}
           <div className="text-center mb-4">
@@ -32,7 +32,10 @@ function Dashboard() {
 
             <span>
               <Link to={`/myweek/${week._id}`} className="text-green-900 underline hover:text-green-700">Edit</Link>
-              <button className="text-red-500 underline ml-4 hover:text-red-700">Delete</button>
+              <button className="text-red-500 underline ml-4 hover:text-red-700" onClick={() => {
+                deleteWeek({variables:{id:week._id}})
+                window.location.reload();
+                }}>Delete</button>
             </span>
           </div>
 
