@@ -28,7 +28,7 @@
 - **CRUD** operations for meal plans (Create, Read, Update, Delete).
 - Responsive and polished UI using **Material-UI**/**Bootstrap**/**Tailwind CSS**.
 - **GraphQL API** for efficient data management.
-- Deployed on **Render** (backend) and **Netlify** (frontend).
+- Deployed on **Render**.
 
 ## Technologies Used
 
