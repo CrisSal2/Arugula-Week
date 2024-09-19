@@ -129,13 +129,14 @@ const resolvers = {
         { new: true }
       );
     },
-    deleteMealPlan: async (parent, { mealPlanId }, context) => {
+    deleteMealPlan: async (parent, { id }, context) => {
+      console.log(context.user);
       if (!context.user) {
         throw new Error("Not authenticated");
       }
       try {
         // Find and delete the meal plan by its ID
-        const deletedMealPlan = await MealPlan.findByIdAndDelete(mealPlanId);
+        const deletedMealPlan = await MealPlan.findByIdAndDelete(id);
 
         if (!deletedMealPlan) {
           throw new Error("Meal plan not found");
