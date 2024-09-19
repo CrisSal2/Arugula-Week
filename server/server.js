@@ -1,4 +1,4 @@
-const express = require("express");
+/* const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 4000;
 const corsOptions = {
   origin: process.env.NODE_ENV === "production" 
     ? process.env.CLIENT_URL || "https://arugula-week-864c.onrender.com" 
-    : "http://localhost:5173", // Local development client
+    : "http://localhost:5173",
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -54,7 +54,7 @@ const startServer = async () => {
   }
 };
 
-startServer();
+startServer(); */
 
 
 
@@ -70,7 +70,7 @@ startServer();
 
 
 
-/* const express = require("express");
+const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -115,4 +115,3 @@ const startServer = async () => {
 };
 
 startServer();
- */
