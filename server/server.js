@@ -79,6 +79,7 @@ const { authMiddleware } = require("./utils/auth");
 const typeDefs = require("./schema/typeDefs");
 const resolvers = require("./schema/resolvers");
 const cors = require("cors");
+const path = require('path');
 
 // Load environment variables
 dotenv.config();
