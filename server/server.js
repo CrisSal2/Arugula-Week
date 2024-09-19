@@ -91,7 +91,7 @@ const corsOptions = {
   origin: process.env.CLIENT_URL || "https://arugula-week-864c.onrender.com",
   credentials: true,
 };
-app.use(cors(corsOptions));
+/* app.use(cors(corsOptions)); */
 
 // Apollo Server setup
 const server = new ApolloServer({
