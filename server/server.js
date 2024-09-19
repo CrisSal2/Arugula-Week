@@ -8,13 +8,13 @@ const typeDefs = require("./schema/typeDefs");
 const resolvers = require("./schema/resolvers");
 const cors = require("cors");
 
-// Load environment variables
+
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// CORS configuration
+
 const corsOptions = {
   origin: process.env.NODE_ENV === "production" 
     ? process.env.CLIENT_URL || "https://arugula-week-864c.onrender.com" 
@@ -22,9 +22,9 @@ const corsOptions = {
   credentials: true,
 };
 app.use(cors(corsOptions));
-app.use(express.json()); // For parsing incoming JSON payloads
+app.use(express.json());
 
-// Apollo Server setup
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -36,14 +36,14 @@ const startServer = async () => {
     await server.start();
     server.applyMiddleware({ app });
 
-    // MongoDB connection
+    
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
     console.log("MongoDB connected");
 
-    // Server listen
+    
     app.listen(PORT, '0.0.0.0', () => {
       console.log(`Server is running on port ${PORT}`);
       console.log(`GraphQL endpoint: ${server.graphqlPath}`);
