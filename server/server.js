@@ -99,6 +99,14 @@ const server = new ApolloServer({
   context: ({ req }) => authMiddleware({ req }),
 });
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  });
+} 
+
 const startServer = async () => {
   await server.start();
   server.applyMiddleware({ app });
