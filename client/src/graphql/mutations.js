@@ -134,27 +134,25 @@ export const UPDATE_WEEK = gql`
 `;
 
 
-/* export const UPDATE_MEALS = gql`
-  mutation UpdateMeals($weekId: ID!, $day: String!, $meals: MealInput!) {
-    updateMeals(weekId: $weekId, day: $day, meals: $meals) {
-      _id
-      meals {
-        [day]: {
-          breakfast
-          lunch
-          dinner
-        }
-      }
-    }
-  }
-`;
+//  export const UPDATE_MEALS = gql`
+//   mutation UpdateMeals($weekId: ID!, $day: String!, $meals: MealInput!) {
+//     updateMeals(weekId: $weekId, day: $day, meals: $meals) {
+//       _id
+//       meals {
+//         [day]: {
+//           breakfast
+//           lunch
+//           dinner
+//         }
+//       }
+//     }
+//   }
+// `;
 
 
-export const REMOVE_WEEK = gql`
-  mutation RemoveWeek($weekId: ID!) {
-    removeWeek(weekId: $weekId) {
-      _id
-    }
-  }
+export const DELETE_WEEK = gql`
+  mutation deleteMealPlan($id: ID!) {
+  deleteMealPlan(id: $id)
+}
 `;
- */
+ 

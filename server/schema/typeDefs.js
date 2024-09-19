@@ -46,7 +46,7 @@ const typeDefs = gql`
     signup(username: String!, email: String!, password: String!): AuthPayload
     addMealPlan(name: String!, description: String!, url: String!, meals: [MealInput!]!): MealPlan
     updateMealPlan(id: ID!, name: String, description: String, meals: [MealInput], url: String): MealPlan
-    deleteMealPlan(mealPlanId: ID!): Boolean
+    deleteMealPlan(id: ID!): Boolean
     
     addMeal(mealPlanId: ID!, name: String!, calories: Int!, description: String!): MealPlan
     updateMeal(mealPlanId: ID!, mealId: ID!, name: String, calories: Int, description: String): MealPlan
