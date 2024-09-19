@@ -7,7 +7,7 @@
     "start": "node server/server.js",
     "client-start": "cd client && npm start",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
-    "install": "cd server && npm install && cd ../client && npm install",
+    "install": "cd server && npm install && cd ../client && npm install && npm run build",
     "seed": "cd server && npm run seed",
     "build": "cd client && npm run build",
     "render-build": "npm install && npm run build"
