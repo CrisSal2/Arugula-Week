@@ -36,7 +36,7 @@ const resolvers = {
     },
     week: async (parent, { id }) => {
       try {
-        return await Week.findById(id); 
+        return await Week.findById(id);
       } catch (error) {
         console.error("Error fetching week:", error);
         throw new Error("Failed to fetch week");
@@ -58,20 +58,28 @@ const resolvers = {
       return { token, user };
     },
     // Add new meal to a specific MealPlan
-    addMeal: async (parent, { mealPlanId, name, calories, description }, context) => {
+    addMeal: async (
+      parent,
+      { mealPlanId, name, calories, description },
+      context
+    ) => {
       if (!context.user) {
         throw new AuthenticationError("Not authenticated");
       }
-      
+
       const mealPlan = await MealPlan.findById(mealPlanId);
       const newMeal = { name, calories, description };
       mealPlan.meals.push(newMeal); // Add meal to the meal plan
-      
+
       await mealPlan.save();
       return mealPlan;
     },
     // Update a specific meal in a MealPlan
-    updateMeal: async (parent, { mealPlanId, mealId, name, calories, description }, context) => {
+    updateMeal: async (
+      parent,
+      { mealPlanId, mealId, name, calories, description },
+      context
+    ) => {
       if (!context.user) {
         throw new AuthenticationError("Not authenticated");
       }
@@ -97,15 +105,16 @@ const resolvers = {
           throw new Error("Meal plan not found");
         }
         // Filter out the meal with the specified mealId
-        mealPlan.meals = mealPlan.meals.filter(meal => meal._id.toString() !== mealId);
+        mealPlan.meals = mealPlan.meals.filter(
+          (meal) => meal._id.toString() !== mealId
+        );
 
         await mealPlan.save();
         return mealPlan;
-      }catch (error) {
+      } catch (error) {
         console.error("Error deleting meal:", error);
         throw new Error("Failed to delete meal");
       }
-      
     },
     addMealPlan: async (parent, { name, description, meals, url }, context) => {
       try {
@@ -115,11 +124,14 @@ const resolvers = {
         return await MealPlan.create({ name, description, meals, url });
       } catch (error) {
         console.error("Error adding meal plan: ", error);
-        throw new Error("Failed to add meal plan")
-        
+        throw new Error("Failed to add meal plan");
       }
     },
-    updateMealPlan: async ( parent, { id, name, description, meals, url }, context ) => {
+    updateMealPlan: async (
+      parent,
+      { id, name, description, meals, url },
+      context
+    ) => {
       if (!context.user) {
         throw new Error("Not authenticated");
       }
@@ -151,16 +163,19 @@ const resolvers = {
       const newWeek = new Week({ meals, weekStart, weekEnd });
       await newWeek.save();
       return newWeek;
-    }, 
+    },
     updateWeek: async (parent, { id, meals, weekStart, weekEnd }) => {
       try {
-        return await Week.findByIdAndUpdate
-        (id, { meals, weekStart, weekEnd }, { new: true });
+        return await Week.findByIdAndUpdate(
+          id,
+          { meals, weekStart, weekEnd },
+          { new: true }
+        );
       } catch (error) {
         console.error("Error updating week:", error);
         throw new Error("Failed to update week");
       }
-    },   
+    },
     subscribePremium: async (parent, { planId, paymentToken }, context) => {
       if (!context.user) {
         throw new Error("Not authenticated");
