@@ -5,8 +5,6 @@
 - [Project Description](#project-description)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 - [Screenshots](#screenshots)
 - [License](#license)
@@ -15,6 +13,11 @@
 ## Project Description
 
 **Arugula-Week** is a full-stack web application that helps users plan and manage their meals efficiently. Users can create, update, and delete meal plans, and track the ingredients and meals they need for the week. The app is built with the MERN stack (MongoDB, Express, React, Node.js) and leverages GraphQL for efficient data querying and mutations.
+
+# Launched Site: https://arugula-week.onrender.com/
+
+![Webpage Preview](./client/public/images/arugula-week.onrender.com_.png)
+
 
 ### User Stories
 - **As a user**, I want to create an account and securely log in to manage my meal plans.
@@ -38,8 +41,6 @@
 - **Authentication**: JWT for user authentication
 - **Deployment**: Render for backend, Netlify for frontend
 - **Version Control**: Git and GitHub
-
-## Installation
 
 ### Backend Setup
 
@@ -78,8 +79,6 @@
    ```bash
    npm run develop
    ```
-
-## Usage
 
 ### Running Locally
 
@@ -152,11 +151,14 @@ The app uses GraphQL for data fetching and manipulation. Below are some of the k
 
 ## Screenshots
 
-_Include screenshots of your application here to showcase its appearance and functionality._
+# Fill out your Week!
+![Webpage Preview](./client/public/images/arugula-week.onrender.com_filled-week.png)
 
-## License
+# View your weeks!
+![Webpage Preview](./client/public/images/arugula-week.onrender.com_dashboard%20(2).png)
 
-This project is licensed under the MIT License.
+# License
+  ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## Contributors
 
